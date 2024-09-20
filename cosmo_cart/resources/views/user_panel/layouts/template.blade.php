@@ -51,7 +51,6 @@
                      <div class="custom_menu">
                         <ul>
                            <li><a href="#">Best Sellers</a></li>
-                           <li><a href="#">Categories</a></li>
                            <li><a href="{{route('newrelease')}}">New Releases</a></li>
                            <li><a href="{{route('todaysdeal')}}">Today's Deals</a></li>
                            <li><a href="{{route('customerservice')}}">Customer Service</a></li>
@@ -67,7 +66,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-sm-12">
-                     <div class="logo"><a href="index.html"><img src="{{asset('home_/images/logo.png')}}" height="100" width="150"></a></div>
+                     <div class="logo"><a href="index.html"><img src="{{asset('home_/images/logo.png')}}" height="200" width="250"></a></div>
                   </div>
                </div>
             </div>
@@ -120,13 +119,13 @@
                      </div>
                      <div class="login_menu">
                         <ul>
-                           <li><a href="#">
+                           <li><a href="{{route('addtocart')}}">
                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                               <span class="padding_10">Cart</span></a>
                            </li>
-                           <li><a href="#">
+                           <li><a href="{{route('userprofile')}}">
                               <i class="fa fa-user" aria-hidden="true"></i>
-                              <span class="padding_10">Cart</span></a>
+                              <span class="padding_10">Profile</span></a>
                            </li>
                         </ul>
                      </div>
@@ -151,30 +150,20 @@
       <!-- footer section start -->
       <div class="footer_section layout_padding">
          <div class="container">
-            <div class="footer_logo"><a href="index.html"><img src="{{asset('home_/images/footer-logo.png')}}"></a></div>
-            <div class="input_bt">
-               <input type="text" class="mail_bt" placeholder="Your Email" name="Your Email">
-               <span class="subscribe_bt" id="basic-addon2"><a href="#">Subscribe</a></span>
-            </div>
+            <div class="footer_logo"><a href="index.html"><img src="{{asset('home_/images/cosmo_cart_logo.png')}}" height="200" width="250"></a></div>
             <div class="footer_menu">
                <ul>
-                  <li><a href="#">Best Sellers</a></li>
-                  <li><a href="#">Gift Ideas</a></li>
                   <li><a href="#">New Releases</a></li>
                   <li><a href="#">Today's Deals</a></li>
                   <li><a href="#">Customer Service</a></li>
                </ul>
             </div>
-            <div class="location_main">Help Line  Number : <a href="#">+1 1800 1200 1200</a></div>
+            <div class="location_main">Prepared by : <a href="#">Group-1</a></div>
+            <div class="location_main">Source code: <a href="https://github.com/Rudra-roy/cse_370_project_resources">Cosmo-Cart</a></div>
          </div>
       </div>
       <!-- footer section end -->
       <!-- copyright section start -->
-      <div class="copyright_section">
-         <div class="container">
-            <p class="copyright_text">© 2020 All Rights Reserved. Design by <a href="https://html.design">Free html  Templates</a></p>
-         </div>
-      </div>
       <!-- copyright section end -->
       <!-- Javascript files-->
       <script src="{{asset('home_/js/jquery.min.js')}}"></script>

@@ -26,7 +26,7 @@
                         </a>
 
                         <!-- Logout Button -->
-                        <form action="" method="POST" class="mt-3">
+                        <form action="{{route('logout')}}" method="POST" class="mt-3">
                             @csrf
                             <button type="submit" class="btn btn-danger w-100">
                                 Logout

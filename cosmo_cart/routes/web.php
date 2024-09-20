@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
@@ -7,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ClientController;
+use Illuminate\Contracts\Session\Middleware\AuthenticatesSessions;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -21,6 +24,7 @@ Route::controller(ClientController::class)->group(function (){
     Route::get('/category-page/{id}/{slug}', 'CategoryPage')->name('categorypage');
     Route::get('/single-product-details/{id}/{slug}/{product_category_id}/{product_subcategory_id}', 'SingleProduct')->name('singleproduct');
     Route::get('/new-release', 'NewRelease')->name('newrelease');
+    Route::get('/category-sort/{id}', 'CategorySort')->name('categorysort');
 
 });
 
@@ -37,6 +41,8 @@ Route::middleware(['auth', 'role:user'])->group(function(){
         Route::get('/todays-deal', 'TodaysDeal')->name('todaysdeal');
         Route::get('/customer-service', 'CustomerService')->name('customerservice');
         Route::get('/remove-cart-item/{id}', 'RemoveCartItem')->name('removecartitem');
+        Route::post('/rate-product/{id}', 'RateProduct')->name('rateproduct');
+        Route::post('/submit-feedback/{id}', 'submitFeedback')->name('submitFeedback');
     });
 });
 
@@ -87,6 +93,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 
 

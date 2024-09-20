@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\Cart;
+use App\Models\Feedback;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,11 @@ class ClientController extends Controller
         $product = Product::findorFail($id);
         $category = Category::findorFail($product_category_id);
         $subcategory = SubCategory::findorFail($product_subcategory_id);
-        return view('user_panel.single_product', compact('product', 'category', 'subcategory'));
+
+        $feedbacks = Feedback::where('product_id', $id)->with('user')->get();
+
+
+        return view('user_panel.single_product', compact('product', 'category', 'subcategory', 'feedbacks'));
     }
 
     public function AddTocart() {
@@ -82,4 +87,64 @@ class ClientController extends Controller
     public function OrderHistory() {
         return view('user_panel.order_history');
     }
+
+    public function RateProduct(Request $request, $id) {
+        $product = Product::findorFail($id);
+
+        $previous_rating = $product->rating;
+        $new_rating = $previous_rating + $request->rating;
+        $current_number_of_ratings = $product->number_of_rating + 1;
+        $new_average_rating = $new_rating / $current_number_of_ratings;
+
+        $product->rating = $new_average_rating;
+        $product->number_of_rating = $current_number_of_ratings;
+        $product->save();
+
+        return redirect()->route('singleproduct', [$product->id, $product->slug, $product->product_category_id, $product->product_subcategory_id])->with('message', 'Product rated successfully');
+    }
+
+    public function submitFeedBack(Request $request, $id) {
+        $product = Product::findorFail($id);
+        $request->validate([
+            'content' => 'required | string |max:1000',
+        ]);
+
+        Feedback::insert([
+            'user_id' => Auth::id(),
+            'product_id' => $id,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('singleproduct', [$product->id, $product->slug, $product->product_category_id, $product->product_subcategory_id])->with('message', 'Feedback submitted successfully');
+    }
+
+    public function CategorySort(Request $request, $id){
+        $category = Category::findorFail($id);
+
+        $sort_by = $request->input('sort_by');
+
+        $products = Product::where('product_category_id', $id);
+
+        switch ($sort_by) {
+            case 'price_asc':
+                $products = $products->orderBy('price', 'asc');
+                break;
+            case 'price_desc':
+                $products = $products->orderBy('price', 'desc');
+                break;
+            case 'rating_asc':
+                $products = $products->orderBy('rating', 'asc');
+                break;
+            case 'rating_desc':
+                $products = $products->orderBy('rating', 'desc');
+                break;
+        }
+
+        $products = $products->get();
+
+
+        return view('user_panel.category_page', compact('category', 'products'));
+    }
+
+
 }
