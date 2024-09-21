@@ -5,7 +5,7 @@
     <div id="main_slider">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center mb-3">
-                <h1 class="fashion_taital">{{$category->category_name}} - ({{$category->product_count}})</h1>
+                <h1 class="fashion_taital" style="color: #f8f9fa;">{{$category->category_name}} - ({{$category->product_count}})</h1>
                 
                 <!-- Sorting Form -->
                 <form action="{{route('categorysort', $category->id)}}" method="GET" class="form-inline">
@@ -17,8 +17,8 @@
                             <option value="rating_asc">Rating (Low to High)</option>
                             <option value="rating_desc">Rating (High to Low)</option>
                         </select>
+                        <button type="submit" class="btn btn-primary">Sort</button>
                     </div>
-                    <button type="submit" class="btn btn-primary">Sort</button>
                 </form>
             </div>
             
@@ -67,7 +67,7 @@
 
 <style>
     .box_main {
-        background-color: #f8f9fa;
+        background-color: #f8f9facf;
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 20px;
@@ -86,7 +86,7 @@
 
     .rating_text p {
         font-size: 14px;
-        color: #FFD700;
+        color: #f4a108;
         font-weight: bold;
         margin: 10px 0;
     }
@@ -97,6 +97,11 @@
         padding: 5px 10px;
         border-radius: 4px;
         text-decoration: none;
+    }
+    .mr-2 {
+        color: #fff;
+        text-decoration: bold;
+        font-size: 1rem;
     }
 </style>
 

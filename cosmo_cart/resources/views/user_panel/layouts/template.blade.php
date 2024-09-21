@@ -66,7 +66,7 @@
             <div class="container">
                <div class="row">
                   <div class="col-sm-12">
-                     <div class="logo"><a href="index.html"><img src="{{asset('home_/images/logo.png')}}" height="200" width="250"></a></div>
+                     <div class="logo"><a href="{{route('home')}}"><img src="{{asset('home_/images/logo.png')}}" height="200" width="250"></a></div>
                   </div>
                </div>
             </div>
@@ -150,7 +150,7 @@
       <!-- footer section start -->
       <div class="footer_section layout_padding">
          <div class="container">
-            <div class="footer_logo"><a href="index.html"><img src="{{asset('home_/images/cosmo_cart_logo.png')}}" height="200" width="250"></a></div>
+            <div class="footer_logo"><a href="{{route('home')}}"><img src="{{asset('home_/images/cosmo-cart-cyan.png')}}" height="200" width="250"></a></div>
             <div class="footer_menu">
                <ul>
                   <li><a href="#">New Releases</a></li>

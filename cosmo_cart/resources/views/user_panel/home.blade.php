@@ -5,12 +5,12 @@
 <div class="fashion_section">
     <div id="main_slider">
              <div class="container">
-                <h1 class="fashion_taital">All Products</h1>
+                <h1 class="fashion_taital" style="color: aliceblue">All Products</h1>
                 <div class="fashion_section_2">
                    <div class="row">
                      @foreach($allproducts as $product)
                       <div class="col-lg-4 col-sm-4">
-                         <div class="box_main">
+                         <div class="box_main" style="background-color: rgb(245, 242, 242)">
                             <h4 class="shirt_text">{{$product->product_name}}</h4>
                             <p class="price_text">Price  <span style="color: #262626;">$ {{$product->price}}</span></p>
                             <div class="tshirt_img"><img src="{{asset($product->product_image)}}"></div>
@@ -22,7 +22,7 @@
                             <style>
                               .rating_text p {
                                   font-size: 14px;
-                                  color: #FFD700; /* Golden color for ratings */
+                                  color: #de7b0aba; /* Golden color for ratings */
                                   font-weight: bold;
                                   margin: 10px 0;
                               }

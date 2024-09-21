@@ -17,7 +17,7 @@ All Categories - Cosmo Cart
         <div class="table-responsive text-nowrap">
             <table class="table table-hover" style="color: #ffffff;">
                 <thead>
-                    <tr style="color: #ffffff;">
+                    <tr style="color: #f6f1f1;">
                         <th>ID</th>
                         <th>Category Name</th>
                         <th>Sub Category Count</th>
